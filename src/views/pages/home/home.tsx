@@ -1,21 +1,19 @@
 import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { products } from '../../../assets/data';
-import { RootState } from '../../../redux/store';
+// import { RootState } from '../../../redux/store';
 import SingleProduct from '../../components/singleProduct';
 
 
 const Home = () => {
-	const cartList = useSelector((state: RootState) => state.cart.cartList)
-	const dispatch = useDispatch()
+	// const cartList = useSelector((state: RootState) => state.cart.cartList)
+	// const dispatch = useDispatch()
 	return (
 		<div className='container mx-auto'>
-			<div className="grid grid-cols-4 gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 sm:px-0 sm:gap-4">
 
 				{
-					products.map((item) => <SingleProduct key={item.id} product={item} onclick={function (id: string | undefined): void {
-						throw new Error('Function not implemented.');
-					} } />)
+					products.map((item) => <SingleProduct key={item.id} product={item} />)
 				}
 			</div>
 		</div>

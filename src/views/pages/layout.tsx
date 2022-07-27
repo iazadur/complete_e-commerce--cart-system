@@ -2,7 +2,7 @@ import Main from "./common/main";
 
 const Layout = () => {
 	return (
-		<div className="mt-16">
+		<div className="mt-20">
 			<Main />
 		</div>
 	);

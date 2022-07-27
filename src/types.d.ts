@@ -5,6 +5,9 @@ interface IProduct {
 	image: string;
 	price: number;
 	rating: number;
+	favorite?: boolean;
+	sale?: boolean
 }
+interface ICart { id: number, name: string, qty: number }
 
 

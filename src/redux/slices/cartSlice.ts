@@ -1,8 +1,8 @@
-import type { PayloadAction } from '@reduxjs/toolkit'
+// import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface CartState {
-	cartList: { id: number, name: string, qty: number }[]
+	cartList: ICart[]
 }
 
 const initialState: CartState = {
@@ -13,23 +13,50 @@ export const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		increment: (state) => {
-			// Redux Toolkit allows us to write "mutating" logic in reducers. It
-			// doesn't actually mutate the state because it uses the Immer library,
-			// which detects changes to a "draft state" and produces a brand new
-			// immutable state based off those changes
-			state.cartList.push( {
-				id: 2, name: "string2", qty: 2
-			})
+		addToCart: (state, action: {
+			payload: ICart
+		}) => {
+			const result = state.cartList.find((item) => item?.id === action.payload.id)
+			if (result) {
+				result.qty = action.payload.qty ? result.qty + action.payload.qty : result.qty + 1;
+			} else {
+				state.cartList.push({ ...action.payload, qty: action.payload.qty || 1 });
+			}
 		},
-		decrement: (state) => {
-			state.cartList.pop()
+		increment: (state, action: {
+			payload:number
+		}) => {
+			const cartItem = state.cartList?.find((item) => item.id === action.payload);
+			if (cartItem) {
+				cartItem.qty = cartItem.qty + 1;
+			}
 		},
-		
+		decrement: (state, action: {
+			payload: number
+		}) => {
+			const result = state.cartList.find((item) => item.id === action.payload);
+
+
+			if (result?.qty === 1) {
+				state.cartList = state.cartList.filter((i) => i.id !== action.payload)
+			}
+			if (result!.qty >= 2) {
+				result!.qty -=  1;
+			}
+		},
+		removeFromCart: (state, action: {
+			payload: number
+		}) => {
+			const cartItem = state.cartList?.find((item) => item.id === action.payload);
+			if (cartItem) {
+				state.cartList = state.cartList.filter((i) => i.id !== action.payload)
+			}
+		},
+
 	},
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement } = cartSlice.actions
+export const { addToCart, increment, decrement, removeFromCart } = cartSlice.actions
 
 export default cartSlice.reducer

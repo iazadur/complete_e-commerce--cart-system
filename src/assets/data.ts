@@ -7,8 +7,8 @@ export const products = [
 		category: 'Electronics',
 		image: productOne,
 		rating: 4,
-		price: 1725.00
-
+		price: 1725.00,
+		favorite: true
 
 	},
 	{
@@ -27,7 +27,9 @@ export const products = [
 		category: 'Garmin Watch Fit X',
 		image: productThree,
 		rating: 4,
-		price: 1725.00
+		price: 1725.00,
+		favorite: true,
+		sale:true
 
 
 	},
@@ -37,8 +39,8 @@ export const products = [
 		category: 'Electronics',
 		image: productFour,
 		rating: 4,
-		price: 200
-
+		price: 200,
+		favorite: true
 
 	},
 	{
@@ -81,5 +83,5 @@ export const products = [
 
 
 	},
-	
+
 ]
