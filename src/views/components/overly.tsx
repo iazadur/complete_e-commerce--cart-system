@@ -69,27 +69,29 @@ export default function Overly({ open, setOpen }: { open: boolean, setOpen: Reac
 										</div>
 										<div className="relative mt-6 flex-1 px-4 sm:px-6">
 											{/* Replace with your content */}
-											<div className="absolute inset-0 px-4 sm:px-6">
+											<div className="absolute inset-0 px-4 sm:px-6 overflow-y-scroll example">
 												{
 													cartList.map(res => <SingleCartItem key={res.id} item={res} />)
 												}
 											</div>
 											{/* /End replace */}
 										</div>
-										<div className="">
-											<div className="h-[50px] bg-[#E8F0D6] flex justify-center items-center mx-[32px] rounded">
-												<p className='text-[16px] font-normal leading-[26px] text-[#161D25]'>Hey get Free shipping on order over 250$</p>
+
+										<div className="pt-6">
+											<div className="h-[50px] bg-[#E8F0D6] flex justify-center items-center mx-[20px] sm:mx-[32px] rounded">
+												<p className='text-[12px] sm:text-[16px] font-normal leading-[26px] text-[#161D25]'>Hey get Free shipping on order over 250$</p>
 											</div>
-											<div className="flex justify-between items-center mt-[32px] mx-[32px] ">
+											<div className="flex justify-between items-center mt-[32px] mx-[20px] sm:mx-[32px] ">
 												<div className="flex flex-col items-start space-y-1">
 													<p className='text-[18px] leading-[18px] font-normal text-[#959EAD] '>Sub total:</p>
 													<p className='text-[20px] leading-[30px] font-semibold text-[#161D25]'>${total}</p>
 												</div>
-												<div className="w-[333px] h-[52px] bg-[#5C6AC4] flex justify-center items-center rounded ">
+												<div className="w-[180px] sm:w-[333px] h-[52px] bg-[#5C6AC4] flex justify-center items-center rounded ">
 													<p className='text-[16px] font-medium leading-[26px] text-[#fff]'>Checkout</p>
 												</div>
 											</div>
 										</div>
+
 									</div>
 								</Dialog.Panel>
 							</Transition.Child>
