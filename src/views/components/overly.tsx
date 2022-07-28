@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useSelector } from 'react-redux'
@@ -10,7 +9,11 @@ export default function Overly({ open, setOpen }: { open: boolean, setOpen: Reac
 
 	const { cartList } = useSelector((state: RootState) => state.cart)
 
-
+	const priceList = cartList?.map(p => p.qty * p.price)
+	const total = priceList.reduce(
+		(previousValue, currentValue) => previousValue + currentValue,
+		0
+	);
 	return (
 		<Transition.Root show={open} as={Fragment}>
 			<Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -72,6 +75,20 @@ export default function Overly({ open, setOpen }: { open: boolean, setOpen: Reac
 												}
 											</div>
 											{/* /End replace */}
+										</div>
+										<div className="">
+											<div className="h-[50px] bg-[#E8F0D6] flex justify-center items-center mx-[32px] rounded">
+												<p className='text-[16px] font-normal leading-[26px] text-[#161D25]'>Hey get Free shipping on order over 250$</p>
+											</div>
+											<div className="flex justify-between items-center mt-[32px] mx-[32px] ">
+												<div className="flex flex-col items-start space-y-1">
+													<p className='text-[18px] leading-[18px] font-normal text-[#959EAD] '>Sub total:</p>
+													<p className='text-[20px] leading-[30px] font-semibold text-[#161D25]'>${total}</p>
+												</div>
+												<div className="w-[333px] h-[52px] bg-[#5C6AC4] flex justify-center items-center rounded ">
+													<p className='text-[16px] font-medium leading-[26px] text-[#fff]'>Checkout</p>
+												</div>
+											</div>
 										</div>
 									</div>
 								</Dialog.Panel>

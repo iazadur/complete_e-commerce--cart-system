@@ -1,18 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { minus, plus, remove } from '../../assets/icon';
-import { decrement, increment, removeFromCart } from '../../redux/slices/cartSlice';
+import { remove } from '../../assets/icon';
+import { removeFromCart } from '../../redux/slices/cartSlice';
 import { get_product } from './utils/get-product';
+import PlusMinus from './utils/plusMinus';
 
 const SingleCartItem = ({ item }: { item: ICart }) => {
 	const result = get_product(item.id)
 	const dispatch = useDispatch()
-	const incrementItem = () => {
-		dispatch(increment(item.id))
-	}
-	const decrementItem = () => {
-		dispatch(decrement(item.id))
-	}
+
 	const removeItem = () => {
 		dispatch(removeFromCart(item.id))
 	}
@@ -39,17 +35,8 @@ const SingleCartItem = ({ item }: { item: ICart }) => {
 					</div>
 
 					{/* Increment Decrement  */}
-					<div className="h-[44px] w-[130px] rounded-[5px] border border-[#161D25] flex justify-around items-center ">
-						<div onClick={() => decrementItem()} className="">
-							<img src={minus} alt="" />
-						</div>
-						<div className="">
-							<p>{item.qty}</p>
-						</div>
-						<div onClick={() => incrementItem()} className="">
-							<img src={plus} alt="" />
-						</div>
-					</div>
+					<PlusMinus item={item} />
+
 				</div>
 			</div>
 		</div>

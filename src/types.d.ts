@@ -8,6 +8,11 @@ interface IProduct {
 	favorite?: boolean;
 	sale?: boolean
 }
-interface ICart { id: number, name: string, qty: number }
+interface ICart {
+	id: number,
+	name: string,
+	qty: number,
+	price: number,
+}
 
 
