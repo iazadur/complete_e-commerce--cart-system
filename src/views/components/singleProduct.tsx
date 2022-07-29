@@ -45,9 +45,9 @@ const SingleProduct = ({
 					<img src={star} alt="" />
 				</div>
 			</div>
-			<div className="flex justify-between items-center px-[12px] py-[10px] rounded-md border border-[#161D25]">
-				{already?.id ?<PlusMinus item={already} />:<button onClick={() => handleCart()} className="font-normal text-sm leading-[24px] text-[#161D25]">Add to cart</button>}
-				<div className="font-semibold text-sm leading-[24px] text-[#161D25]">${product.price} </div>
+			<div className="flex justify-between items-center px-[12px] py-[10px] rounded-md border hover:border-[#5C6AC4] group border-[#161D25] hover:bg-[#5C6AC4] transition-all duration-300 ease-linear">
+				{already?.id ? <PlusMinus item={already} /> : <button onClick={() => handleCart()} className="font-normal text-sm leading-[24px] group-hover:text-white text-[#161D25] transition-all duration-300 ease-linear">Add to cart</button>}
+				<div className="font-semibold text-sm leading-[24px] group-hover:text-white text-[#161D25] transition-all duration-300 ease-linear">${product.price} </div>
 			</div>
 		</div>
 	);
